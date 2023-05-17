@@ -69,9 +69,32 @@ void addAppDialog::on_btn_selectApp_clicked()
         return;
     }
     QFileInfo fileInfo(path);
-    if(ui->ed_appName->text().isEmpty())
-        ui->ed_appName->setText(fileInfo.fileName());
-    ui->ed_appPath->setText(fileInfo.filePath());
+    if(fileInfo.suffix() == "desktop") { //desktop文件
+        QSettings set(path, QSettings::IniFormat);
+
+        QString name = set.value("Desktop Entry/Name[zh_CN]").toString();
+        if(name.isEmpty()) {
+            name =  set.value("Desktop Entry/Name").toString();
+        }
+        QString exec = set.value("Desktop Entry/Exec").toString();
+        QString iconPath =  set.value("Desktop Entry/Icon").toString();
+        if(!QFile::exists(iconPath)) {
+            QString t = iconPath;
+            iconPath = "/usr/share/icons/hicolor/scalable/apps/" + iconPath;
+            if(!QFile::exists(iconPath))
+                iconPath = "/usr/share/icons/bloom/apps/32/" + t + ".svg";
+        }
+
+
+        ui->ed_appName->setText(name);
+        ui->ed_appPath->setText(exec.split(' ').value(0));
+        ui->ed_iconPath->setText(iconPath);
+    }
+    else {
+        if(ui->ed_appName->text().isEmpty())
+            ui->ed_appName->setText(fileInfo.fileName());
+        ui->ed_appPath->setText(fileInfo.filePath());
+    }
 }
 
 void addAppDialog::on_btn_selectIcon_clicked()
