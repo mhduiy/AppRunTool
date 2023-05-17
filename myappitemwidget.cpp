@@ -21,6 +21,9 @@ MyAppItemWidget::MyAppItemWidget(QWidget *parent)
         QWidget#mainWidget:hover{
             background-color: #d0d0d0;
         }
+        QLabel {
+            font-size: 12px;
+        }
     )");
 }
 

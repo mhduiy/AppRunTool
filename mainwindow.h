@@ -6,6 +6,8 @@
 #include <QPoint>
 #include <QMenu>
 #include "myconfigdata.h"
+#include <QSystemTrayIcon>
+#include <qxtglobalshortcut.h>
 
 
 QT_BEGIN_NAMESPACE
@@ -40,6 +42,7 @@ private slots:
     void showAppMenu(QPoint p);
     void startApp(APPINFO *info);
     void responseAppMenu(QAction *action);
+    void responseSysTrayMenu(QAction *action);
     void setCurInfo(int index);
     void modifyCurInfo();
 
@@ -50,5 +53,7 @@ private:
     QVector<APPINFO*> appInfors;
     QMenu *appMenu;
     int curIndex;   //当前选择的index
+    QSystemTrayIcon *sysTrayIcon;
+    QxtGlobalShortcut *globalShortcut;
 };
 #endif // MAINWINDOW_H

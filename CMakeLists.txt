@@ -12,7 +12,10 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets DBus)
+find_package(qxtglobalshortcut REQUIRED)
+
+include_directories(${QXT_INCLUDE_DIRS})
 
 set(PROJECT_SOURCES
         main.cpp
@@ -52,6 +55,8 @@ else()
 endif()
 
 target_link_libraries(MyApp PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(MyApp PRIVATE qxtglobalshortcut)
+target_link_libraries(MyApp PRIVATE Qt${QT_VERSION_MAJOR}::DBus)
 
 set_target_properties(MyApp PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

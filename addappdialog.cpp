@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QSettings>
 #include <QDebug>
+#include <QTextCodec>
 
 addAppDialog::addAppDialog(QWidget *parent) :
     QDialog(parent),
@@ -71,6 +72,7 @@ void addAppDialog::on_btn_selectApp_clicked()
     QFileInfo fileInfo(path);
     if(fileInfo.suffix() == "desktop") { //desktop文件
         QSettings set(path, QSettings::IniFormat);
+        set.setIniCodec(QTextCodec::codecForName("utf-8"));
 
         QString name = set.value("Desktop Entry/Name[zh_CN]").toString();
         if(name.isEmpty()) {
@@ -81,10 +83,10 @@ void addAppDialog::on_btn_selectApp_clicked()
         if(!QFile::exists(iconPath)) {
             QString t = iconPath;
             iconPath = "/usr/share/icons/hicolor/scalable/apps/" + iconPath;
-            if(!QFile::exists(iconPath))
-                iconPath = "/usr/share/icons/bloom/apps/32/" + t + ".svg";
         }
-
+        if(!QFile::exists(iconPath)) {
+            iconPath = "";
+        }
 
         ui->ed_appName->setText(name);
         ui->ed_appPath->setText(exec.split(' ').value(0));

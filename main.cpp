@@ -8,6 +8,7 @@ int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
+    a.setQuitOnLastWindowClosed(false);
     QLoggingCategory::defaultCategory()->setEnabled(QtDebugMsg, true);  //允许输出调试信息
 
     MainWindow w;
