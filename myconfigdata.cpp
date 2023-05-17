@@ -30,6 +30,7 @@ QVector<APPINFO *> MyConfigData::getAppInfos()
             item->appName = jsonObj.value("appName").toString();
             item->appPath = jsonObj.value("appPath").toString();
             item->appOption = jsonObj.value("appOption").toString();
+            item->iconPath = jsonObj.value("iconPath").toString();
             result.append(item);
         }
     }
@@ -45,6 +46,7 @@ bool MyConfigData::addAppInfo(const APPINFO &info)
     obj.insert("appName", info.appName);
     obj.insert("appPath", info.appPath);
     obj.insert("appOption", info.appOption);
+    obj.insert("iconPath", info.iconPath);
 
     QFile file(CONFIGPATH);
     if(!file.open(QIODevice::ReadOnly)) {
@@ -75,6 +77,7 @@ bool MyConfigData::modifyAppInfo(const QString appName, const APPINFO &info)
     obj.insert("appName", info.appName);
     obj.insert("appPath", info.appPath);
     obj.insert("appOption", info.appOption);
+    obj.insert("iconPath", info.iconPath);
 
     QFile file(CONFIGPATH);
     if(!file.open(QIODevice::ReadOnly)) {
@@ -87,7 +90,7 @@ bool MyConfigData::modifyAppInfo(const QString appName, const APPINFO &info)
     int i = 0;
     for(QJsonArray::iterator it = appInfoArray.begin(); it!=appInfoArray.end(); it++, i++) {
         if(it->toObject().value("appName") == appName) {
-            qDebug() << "执行删除";
+            qDebug() << "执行修改";
             appInfoArray.erase(it);
             appInfoArray.insert(i, obj);
             break;

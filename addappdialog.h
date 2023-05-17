@@ -26,11 +26,13 @@ public:
     }
 
 private slots:
-    void on_btn_select_clicked();
-
     void on_brn_cancel_clicked();
 
     void on_btn_enter_clicked();
+
+    void on_btn_selectApp_clicked();
+
+    void on_btn_selectIcon_clicked();
 
 private:
     Ui::addAppDialog *ui;

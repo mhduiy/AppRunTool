@@ -53,7 +53,12 @@ void MainWindow::updateAppList()
     for(auto it : ret) {
         MyAppItemWidget *w = new MyAppItemWidget();
         w->setName(it->appName);
-        w->setIcon("/home/mhduiy/Desktop/AndroidTools/res/AndroidTools.svg");
+        if(!QFile::exists(it->iconPath)) {  //图标文件不存在
+            w->setIcon("/home/mhduiy/Desktop/AndroidTools/res/AndroidTools.svg");
+        }
+        else {
+            w->setIcon(it->iconPath);
+        }
         w->setProperty("index", i);
         appLayout->addWidget(w, i / 2, i % 2);
         connect(w, &MyAppItemWidget::rightClicked, this, &MainWindow::showAppMenu);

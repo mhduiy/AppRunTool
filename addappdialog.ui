@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>320</width>
-    <height>220</height>
+    <height>250</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>320</width>
-    <height>220</height>
+    <height>250</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>320</width>
-    <height>220</height>
+    <height>250</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -28,15 +28,8 @@
   <layout class="QVBoxLayout" name="verticalLayout" stretch="5,1,1">
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>取个名字</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="ed_appName"/>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="ed_appOption"/>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_2">
@@ -45,8 +38,8 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="ed_appPath"/>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="ed_appName"/>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_3">
@@ -55,13 +48,30 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="ed_appOption"/>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>取个名字</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="ed_appPath"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>图标路径</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="ed_iconPath"/>
      </item>
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,2,0,1">
      <item>
       <spacer name="horizontalSpacer_4">
        <property name="orientation">
@@ -76,9 +86,28 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="btn_select">
+      <widget class="QPushButton" name="btn_selectApp">
+       <property name="maximumSize">
+        <size>
+         <width>80</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="text">
-        <string>选择</string>
+        <string>选择app</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_selectIcon">
+       <property name="maximumSize">
+        <size>
+         <width>80</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>选择icon</string>
        </property>
       </widget>
      </item>

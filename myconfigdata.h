@@ -10,6 +10,7 @@ struct APPINFO {
     QString appName;
     QString appPath;
     QString appOption;
+    QString iconPath;
 };
 
 class MyConfigData : public QObject
